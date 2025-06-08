@@ -77,9 +77,7 @@ createThumbnail();
 // create display content
 function createDisplayImage(image) {
     // clear current image 
-    display.innerHTML = `<button id="left" class="left arrow-left" aria-label="go to previous image" onclick="prev()"></button>
-        <button id="right" class="right arrow-right" aria-label="go to next image" onclick="next()"></button>
-        <button id="toggle" class="toggle" aria-label="toggle thumbnails" onclick="toggle()" aria-controls="thumbnail-container" aria-Expanded="true"></button>`
+    display.innerHTML = ` `
     const displayImage = document.createElement('img');
     displayImage.srcset = image.src;
     displayImage.alt = image.alt;
@@ -91,10 +89,21 @@ function createDisplayImage(image) {
 // call createDisplayImage for base case
 createDisplayImage(images[0]);
 
+// add event listeners to arrow buttons
+// left arrow (prev)
+const arrowLeft = document.getElementById('left');
+arrowLeft.addEventListener("click", function(event){
+    prev();
+})
+// right arrow (next)
+const arrowRight = document.getElementById('right');
+arrowRight.addEventListener("click", function(event){
+    next();
+})
 // display prev image
 function prev() {
     // check if first image
-    if (currentImage > 0){
+    if (currentImage > 0)   {
         currentImage -= 1;
         createDisplayImage(images[currentImage]);
     } else { // if at first image, reset counter to last image 
@@ -125,8 +134,12 @@ document.addEventListener('keydown', function(event) {
     };
 });
 
-// get toggle button
-const toggleBtn = document.getElementById('toggle')
+
+//add event listener to close button
+const toggleBtn = document.getElementById('toggle');
+toggleBtn.addEventListener("click", function(event){
+    toggle();
+});
 
 // create function to toggle thumbnail display
 // give user control over cotent being displayed for a better view of images 
@@ -149,4 +162,18 @@ function toggle() {
         // update ariaExpanded attribute
         toggleBtn.ariaExpanded = "true";
     }
+};
+
+// get rotate suggestion div
+const rotate = document.getElementById('rotate-display-suggestion');
+
+//add event listener to close button
+const closeBtn = document.getElementById('close');
+closeBtn.addEventListener("click", function(event){
+    closeFn();
+});
+
+// close the suggestion
+function closeFn() {
+    rotate.style.display = "none";
 };

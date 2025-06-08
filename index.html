@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Small image gallery displaying Japan at night, lit by neon lights">
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Image Gallery</title>
 </head>
 <body>
-    <!--TODO aria-live -->
     <div id="thumbnail-container" class="thumbnail-container" aria-live="polite"> <!-- thumbnail elements to go here--></div>
     <div id="display" class="display" aria-live="polite"><!-- display elements to go here --></div>
+    <button id="toggle" class="toggle" aria-label="toggle thumbnails" aria-controls="thumbnail-container" aria-Expanded="true"></button>
+    <button id="left" class="left arrow-left" aria-label="go to previous image"></button>
+    <button id="right" class="right arrow-right" aria-label="go to next image"></button>
+    <div id="rotate-display-suggestion" class="rotate" aria-live="polite"><p>Rotate device for a better viewing experience</p><button id="close" class="close" aria-controls="rotate-display-suggestion">x</button></div>
 </body>
 </html>
